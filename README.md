@@ -21,3 +21,4 @@ The MHWP would like VCU capstone students design, implement, and document a prot
 - *Alex Davidkov* - *Computer Science* - Student Team Member
 - *Haley Vivian* - *Computer Science* - Student Team Member
 - *William Meredith* - *Computer Science* - Student Team Member
+
