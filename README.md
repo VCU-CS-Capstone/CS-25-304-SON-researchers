@@ -1,7 +1,7 @@
 # *CS-24-304*
 ## *VCU School of Nursing*
 ## *Short Project Description*
-The MHWP would like VCU capstone students design, implement, and document a prototype API and tablet application that can help researchers learn more about the data in the MHWP repository, permitting them to find potential study participants with features and attributes of interest. . 
+The MHWP would like VCU capstone students design, implement, and document a prototype API and tablet application that can help researchers learn more about the data in the MHWP repository, permitting them to find potential study participants with features and attributes of interest.
 
 | Folder | Description |
 |---|---|
