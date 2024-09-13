@@ -13,7 +13,7 @@ The MHWP would like VCU capstone students design, implement, and document a prot
 
 ## Project Team
 - *Lana Sargent*  - *VCU School of Nursing* - Mentor
-- *John Leonard* - *VCU School of Engineering* - Technical Advisor
+- *Joao Soares* - *VCU School of Engineering* - Technical Advisor / Capstone Manager
 - *John Leonard* - *VCU School of Engineering* - Faculty Advisor
 - *Edson Decker* - *Computer Science* - Student Team Member
 - *Alex Davidkov* - *Computer Science* - Student Team Member
