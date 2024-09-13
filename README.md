@@ -12,9 +12,9 @@ The MHWP would like VCU capstone students design, implement, and document a prot
 | scr | Source code - create as many subdirectories as needed |
 
 ## Project Team
-- *Jered Wendte*  - *VCU School of Nursing* - Mentor
-- *Technical Advisor Name* - *Company Affliation* - Technical Advisor
-- *John Leonard* - *Computer Science* - Faculty Advisor
+- *Lana Sargent*  - *VCU School of Nursing* - Mentor
+- *John Leonard* - *VCU School of Engineering* - Technical Advisor
+- *John Leonard* - *VCU School of Engineering* - Faculty Advisor
 - *Edson Decker* - *Computer Science* - Student Team Member
 - *Alex Davidkov* - *Computer Science* - Student Team Member
 - *Haley Vivian* - *Computer Science* - Student Team Member
