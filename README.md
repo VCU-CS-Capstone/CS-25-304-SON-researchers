@@ -9,7 +9,7 @@ The MHWP would like VCU capstone students design, implement, and document a prot
 | Notes and Research | Relevant helpful information to understand the tools and techniques used in the project |
 | Project Deliverables | Folder that contains final pdf versions of all Fall and Spring Major Deliverables |
 | Status Reports | Project management documentation - weekly reports, milestones, etc. |
-| scr | Source code - create as many subdirectories as needed |
+| src | Source code - create as many subdirectories as needed |
 
 ## Project Team
 - *Lana Sargent*  - *VCU School of Nursing* - Mentor
