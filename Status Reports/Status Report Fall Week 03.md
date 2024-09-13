@@ -2,9 +2,9 @@
 
 **Students' Names: William Meredith, Haley Vivian, Edson Decker, Alex Davidkov**
 
-**Mentor: Dr. Lana Sargent**
+**Mentor: Dr. Lana Sargent (lsargent@vcu.edu)**
 
-**Faculty Advisor:Dr. John Leonard**
+**Faculty Advisor: Dr. John Leonard (jdleonard@vcu.edu)**
 
 ## 1) Accomplishments this week ##
    - Submitted the next project deliverable, the GitHub repository setup.
