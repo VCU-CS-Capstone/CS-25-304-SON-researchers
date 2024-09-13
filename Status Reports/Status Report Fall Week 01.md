@@ -2,7 +2,7 @@
 
 **Students' Names: William Meredith, Haley Vivian, Edson Decker, Alex Davidkov**
 
-**Mentor: Dr. Lana Sargent**
+**Mentor: [Dr. Lana Sargent](lsargent@vcu.edu)**
 
 **Faculty Advisor: Dr. John Leonard**
 
