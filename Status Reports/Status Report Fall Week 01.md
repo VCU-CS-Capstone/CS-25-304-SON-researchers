@@ -4,7 +4,7 @@
 
 **Mentor: Dr. Lana Sargent**
 
-**Faculty Advisor:Dr. John Leonard**
+**Faculty Advisor: Dr. John Leonard**
 
 ## 1) Accomplishments this week ##
    - Established the project team's GitHub repository and created a Discord server for the members to openly communicate and share resources when needed.
