@@ -1,5 +1,5 @@
 # Status Reports Folder
-Members: William Meredith, Edson Decker, Haley Vivian, Alex Davidkov
+Team Members: **William Meredith, Edson Decker, Haley Vivian, Alex Davidkov**
 ## Fall Semester
 
 | Document | Tasks | Accomplishments | Issues |
