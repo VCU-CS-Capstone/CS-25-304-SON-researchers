@@ -11,7 +11,7 @@ Status Report Fall Week XX.md is a template for to copy-paste into new Status re
 
 | Document | Tasks | Accomplishments | Issues |
 |---|---|---|---|
-| Week 1 Status Report | We've accomplished a lot | We'll accomplish even more | No problems to report! |
+| Week 1 Status Report | - Introductions, setting up Discord server | We met as a team for the first time and introduced ourselves as students: What major we are, and what year we are in. Haley set up a Discord server for us to ahve an open communication line and to share any resources we need easily. | No problems to report! |
 | Week 2 Status Report | | | |
 | Week 3 Status Report | | | |
 | Week 4 Status Report | | | |
