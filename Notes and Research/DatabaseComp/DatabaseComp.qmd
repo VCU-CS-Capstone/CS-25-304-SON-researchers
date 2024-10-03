@@ -57,8 +57,6 @@ Or we can implement a non-search bar landing screen, which may include many diff
 
 ![welcome page](images/welcome.png)
 
-* This is the style that nda.nih.gov uses
-
 * **Type 3:** An attractive and eye-catching explanation of the database/Mission Statement:
 
 ![explanatory page](images/explanation.png)
