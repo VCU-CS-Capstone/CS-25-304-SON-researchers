@@ -5,7 +5,6 @@ date: 3 Oct 2024
 format: 
   html:
     embed-resources: true
-    theme: lux
     toc: true
     toc-title: "Contents" 
     toc-depth: 2  
