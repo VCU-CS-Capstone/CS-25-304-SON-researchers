@@ -4,6 +4,7 @@ authors: "William Meredith, Haley Vivian, Alex Davidkov, and Edson Decker"
 date: 2 Oct 2024
 format: 
   html:
+    embed-resources: true
     toc: true
     toc-title: "Contents" 
     toc-depth: 2  
