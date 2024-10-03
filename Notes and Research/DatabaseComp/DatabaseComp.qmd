@@ -8,10 +8,6 @@ format:
     toc: true
     toc-title: "Contents" 
     toc-depth: 2  
-  pdf:
-    toc: true
-    toc-title: "Contents" 
-    number_sections: true  
 ---
 
 This document will serve as our official research report on UX/UI design elements that are will be specified by our sponsors and users; Report made for clarity on the front-end design of the application. 
