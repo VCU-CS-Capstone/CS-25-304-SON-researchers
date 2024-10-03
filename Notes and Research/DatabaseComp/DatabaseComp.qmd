@@ -15,7 +15,7 @@ format:
     number_sections: true  
 ---
 
-# Purpose
+## Purpose
 
 This document will serve as our official research report on UX/UI design elements that are will be specified by our sponsors and users; Report made for clarity on the front-end design of the application. 
 
