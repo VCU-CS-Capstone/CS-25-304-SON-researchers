@@ -1,8 +1,12 @@
 ---
 title: "Database Compilation - Research Report"
-author: "William Meredith, Haley Vivian, Alex Davidkov, Edson Decker"
-date last updated: 2 Oct 2024
-format: html
+authors: "William Meredith, Haley Vivian, Alex Davidkov, and Edson Decker"
+date: 2 Oct 2024
+format: 
+ html:
+    toc: true
+    toc-title: "Contents" 
+    toc-depth: 2  
 ---
 
 # Purpose
@@ -11,47 +15,45 @@ This document will serve as our official research report on UX/UI design element
 
 ## Landing Page
 
-### Preference: Minimal or Maximal
+### Design Element 1: Minimal or Maximal
 
 General preference leaning towards a minimal design?
 
 Such as this:
 
-![minimal](images/minimal.png)
+![minimal design](images/minimal.png)
 
 Or a more information-filled, and maximal design?
 
 Such as this:
 
-![maximalist](images/maximalist.png)
+![maximal design](images/maximalist.png)
 
-### Search Bar
+### Design Element 2: Search Bar or Non-Search
 
 We can implement a search bar landing screen such as this:
 
-![search_bar](images/search_bar.png)
+![search bar](images/search_bar.png)
 
 * This is the _most common_ landing page type between all the databases. 
 * This is also the most **simple** implementation.
 * Will include **tabs** to click to other useful pages present, like so:
 
-![simple_search](images/simple_search.png)
+![another search bar example](images/simple_search.png)
 
-### Non-Search
+Or we can implement a non-search bar landing screen, which may include three types:
 
-Or we can implement a non-search bar landing screen, which may include:
+* **Type 1:** Interesting infographics, data visuals:
 
-* Interesting infographics, data visuals:
+![infographic heavy](images/infographics.png)
 
-![infographics](images/infographics.png)
+* **Type 2:** Welcome screen:
 
-* A minimalist welcome screen:
+![welcome page](images/welcome.png)
 
-![welcome](images/welcome.png)
+* **Type 3:** An attractive and eye-catching explanation of the database:
 
-* An attractive and eye-catching explanation of the database:
-
-![explanation](images/explanation.png)
+![explanatory page](images/explanation.png)
 
 
 
