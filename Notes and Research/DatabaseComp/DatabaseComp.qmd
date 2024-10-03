@@ -22,11 +22,17 @@ Such as this:
 
 ![minimal design](images/minimal.png)
 
+* Simpler, less-cluttered design
+* Has less information from the start
+
 Or a more information-filled, and maximal design?
 
 Such as this:
 
 ![maximal design](images/maximalist.png)
+
+* More complex, busy design
+* User has more information from the start
 
 ## Design Element 2: Search Bar or Non-Search
 
@@ -34,13 +40,14 @@ We can implement a search bar landing screen such as this:
 
 ![search bar](images/search_bar.png)
 
+* Greeted with search bar, inviting user to jump right into the data
 * This is the _most common_ landing page type between all the databases. 
 * This is also the most **simple** implementation.
 * Will include **tabs** to click to other useful pages present, like so:
 
 ![another search bar example](images/simple_search.png)
 
-Or we can implement a non-search bar landing screen, which may include three types:
+Or we can implement a non-search bar landing screen, which may include many different types:
 
 * **Type 1:** Interesting infographics, data visuals:
 
@@ -50,7 +57,9 @@ Or we can implement a non-search bar landing screen, which may include three typ
 
 ![welcome page](images/welcome.png)
 
-* **Type 3:** An attractive and eye-catching explanation of the database:
+* This is the style that nda.nih.gov uses
+
+* **Type 3:** An attractive and eye-catching explanation of the database/Mission Statement:
 
 ![explanatory page](images/explanation.png)
 
