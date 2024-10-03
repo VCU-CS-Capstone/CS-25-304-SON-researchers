@@ -1,10 +1,11 @@
 ---
 title: "Database Compilation - Research Report"
 authors: "William Meredith, Haley Vivian, Alex Davidkov, and Edson Decker"
-date: 2 Oct 2024
+date: 3 Oct 2024
 format: 
   html:
     embed-resources: true
+    theme: lux
     toc: true
     toc-title: "Contents" 
     toc-depth: 2  
