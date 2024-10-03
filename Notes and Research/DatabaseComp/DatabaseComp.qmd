@@ -2,6 +2,7 @@
 title: "Database Compilation - Research Report"
 author: "William Meredith, Haley Vivian, Alex Davidkov, Edson Decker"
 date last updated: 2 Oct 2024
+format: html
 ---
 
 # Purpose
