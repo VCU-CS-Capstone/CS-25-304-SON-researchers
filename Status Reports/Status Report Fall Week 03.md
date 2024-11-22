@@ -13,7 +13,7 @@
 
 ## 2) Milestones to be completed next week ##
    - Interpret our meeting with our sponsor and start conceptualizing our project with this information.
-   - Set up another meeting with our faculty sponsor to get more guidancea and see if our interpretations of the sponsor's wants align with our vision of the project.
+   - Set up another meeting with our faculty sponsor to get more guidance and see if our interpretations of the sponsor's wants align with our vision of the project.
 
 ## 3) Issues, problems or concerns ##
    - No issues so far, I (William) am a bit stressed with the task of having to learn the database we are going to use for this project. I've never really worked with databases outside of academically, so it will be quite the challenge to figure out how to apply my newfound knowledge into a real-world application.
