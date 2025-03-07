@@ -25,10 +25,10 @@ Team Members: **William Meredith, Edson Decker, Haley Vivian, Alex Davidkov**
 
 | Document | Tasks | Accomplishments| Issues |
 |---|---|---|---|
-| Week 1 Status Report | | | |
-| Week 2 Status Report | | | |
-| Week 3 Status Report | | | |
-| Week 4 Status Report | | | |
+| Week 1 Status Report | Meet with other senior project members from the other School of Nursing projects to figure out how they are going to implement backend stuff. | Had our first meeting back as a team to reiterate our upcoming milestones and talked a little bit mroe about how we are going to implement the backend. | No issues for now. |
+| Week 2 Status Report | Find some time to meet with Dr. Leonard to gain some more insight on what we should do with our new info regarding the backend. | We met with some other student researchers and learned how they went about designing and implementing the backend into their projects: One of the students has developed a specific API just for this project and has allowed us to have access to it | No issues for now. |
+| Week 3 Status Report | Continue work on Figma prototype, start to develop a 'Results' page that will dish out information for researchers based on the selected filters. | Alex has come up with a continuation of our Figma prototype page, and has added a filter page to the original layout. We are thinking of scrapping the idea of a keyword search bar in favor of a more streamlined filter system, since that works out of the box with the new API. | One of the group members of another team has created dynamic graphs based on the data from the API database, and we have no idea how they implemented it. We want to have something similar, so we're asking them for help in that regard. |
+| Week 4 Status Report | Have another meeting sometime with our project sponsors, as we have not had a meeting with them for a while, and see if they ever received the feedback form we sent out to them before the end of last semester. | Our meeting this week consisted of learning more about the API system and the calls it makes, learning that we do not have to develop anything in a specific language or framework, the API is really independent. | No issues for now. |
 | Week 5 Status Report | | | |
 | Week 6 Status Report | | | |
 | Week 7 Status Report | | | |
