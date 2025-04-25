@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCU Health - Dynamic Search</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        html, body { height: 100%; }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+            color: #333;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            filter: blur(4px);
+        }
+
+        header { display: flex; justify-content: space-between; align-items: center; background: black; padding: 15px 50px; color: white; border-bottom: 10px solid #EFB310; position: relative; flex-shrink: 0; z-index: 1; }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .logo img { height: 50px; width: auto; display: block; }
+        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 1.2em; font-weight: bold; color: white; width: 60%; white-space: normal; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul li a { color: white; text-decoration: none; font-size: 1em; }
+        nav ul li a:hover, .sign-in:hover { color: #EFB310; }
+        .sign-in { background: none; color: white; border: 2px solid #EFB310; padding: 5px 12px; font-size: 1em; cursor: pointer; margin-left: 20px; }
+
+        .action-button { padding: 10px 25px; font-weight: bold; border-radius: 5px; border: none; cursor: pointer; background-color: #EFB310; color: black; font-size: 1em; transition: background-color 0.2s ease; text-decoration: none; display: inline-block; text-align: center; line-height: normal; }
+        .action-button:hover { background-color: #d9a00b; }
+        #clearBtn.action-button { background-color: #6c757d; color: white; }
+        #clearBtn.action-button:hover { background-color: #5a6268; }
+        .header-back-btn { padding: 6px 15px; font-size: 0.9em; }
+
+        main { flex-grow: 1; padding: 30px 50px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+
+        .filter-modal { display: block; background: #333; padding: 30px 40px; border-radius: 10px; color: white; text-align: center; width: 100%; max-width: 1100px; margin-bottom: 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .filter-modal h2 { margin-bottom: 25px; color: #EFB310; font-size: 1.5em; }
+        .filter-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); grid-gap: 20px 25px; margin-top: 20px; text-align: left; }
+        .filter-options div { display: flex; flex-direction: column; gap: 6px; }
+        .filter-options div.placeholder { visibility: hidden; }
+        .filter-options label { font-weight: bold; color: #f0f0f0; font-size: 0.9em; }
+        .filter-options select, .filter-options input[type="text"] { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #555; background: #fff; color: black; font-size: 0.95em; }
+        .filter-buttons { margin-top: 30px; display: flex; justify-content: center; gap: 15px; }
+
+        #resultsArea { width: 100%; max-width: 1100px; background: #ffffff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-top: 20px; color: #333; }
+        #resultsArea h3 { color: #000; margin-bottom: 15px; border-bottom: 2px solid #EFB310; padding-bottom: 8px; font-size: 1.4em; }
+        #totalParticipantsInfo { font-weight: bold; margin-bottom: 15px; font-size: 1.1em; margin-top: 10px; }
+        #output { margin-top: 15px; max-height: 60vh; overflow: auto; width: 100%; color: #dc3545; }
+        #output p { color: #333; font-style: italic; }
+
+        .results-table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+        .results-table th, .results-table td { border: 1px solid #333; padding: 10px 12px; text-align: left; vertical-align: middle; color: #333; }
+        .results-table th { background-color: #333; color: #EFB310; font-weight: bold; position: sticky; top: 0; z-index: 1; }
+        .results-table tbody tr:nth-child(even) { background-color: #f8f9fa; }
+        .results-table tbody tr:hover { background-color: #e9ecef; }
+        .results-table td small { color: #555; font-size: 0.9em; display: block; margin-top: 3px; }
+
+        #chartContainer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; max-width: 450px; height: 300px; margin-left: auto; margin-right: auto; }
+        #downloadCsvBtn { margin-top: 20px; display: none; }
+
+        footer { position: relative; background: black; color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; width: 100%; flex-shrink: 0; z-index: 1; }
+        footer::before { content: ""; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; background: #EFB310; }
+        .contact a { color: #EFB310; text-decoration: none; font-size: 0.9em; }
+        .contact a:hover { text-decoration: underline; }
+        .social-icons span { font-size: 1.5em; color: #EFB310; font-weight: bold; cursor: pointer; margin-left: 15px; }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="vcu-logo.png" alt="VCU Health Logo">
+                </a>
+            </div>
+            <button type="button" onclick="window.location.href='login.html';" class="action-button header-back-btn">
+                &larr; Back to Login
+            </button>
+        </div>
+         <div class="header-text">
+             Mobile Health and Wellness Program<br>
+             Building healthier and stronger communities
+         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <button class="sign-in">Sign Out</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="filterBox" class="filter-modal">
+            <form id="filterForm">
+                <h2>Demographics, Biomaterial and Clinical Instruments</h2>
+                <div class="filter-options">
+                    <div>
+                        <label for="sex">Gender</label>
+                        <select name="sex" id="sex">
+                            <option value="">Not Set</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="transgender">Transgender</option>
+                            <option value="nonbinary">Non-Binary</option>
+                            <option value="prefernottosanswer">Prefer Not To Answer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="age">Age</label>
+                        <input type="text" name="age" id="age" placeholder=">25, 25..30, 30">
+                    </div>
+                     <div>
+                        <label for="race">Race</label>
+                        <select name="race" id="race">
+                             <option value="">Not Set</option>
+                             <option value="NativeAmerican">American Indian/Alaska Native</option>
+                             <option value="Asian">Asian</option>
+                             <option value="Black">Black or African American</option>
+                             <option value="Hispanic">Hispanic or Latino</option>
+                             <option value="MiddleEasternOrNorthAfrican">Middle Eastern Or North African</option>
+                             <option value="NativeHawaiianOrOtherPacificIslander">Native Hawaiian/Other Pacific Islander</option>
+                             <option value="White">White</option>
+                             <option value="Multiracial">Multiracial</option>
+                             <option value="IdentifyOther">Identify as Other</option>
+                             <option value="Declined">Declined</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="location">Location</label>
+                        <select name="location" id="location">
+                            <option value="">Not Set</option>
+                            <option value="14">VCU Health Hub at 25th</option>
+                            <option value="other_location_id">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="language">Language Spoken</label>
+                        <select name="language" id="language">
+                            <option value="">Not Set</option>
+                            <option value="EnUs">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Asl">ASL</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="insurance">Insurance Coverage</label>
+                        <select name="insurance" id="insurance">
+                            <option value="">Not Set</option>
+                            <option value="Medicaid">Medicaid</option>
+                            <option value="Medicare">Medicare</option>
+                            <option value="Private">Private</option>
+                            <option value="VA">VA</option>
+                            <option value="None">None/Uninsured</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="education">Education</label>
+                        <select name="education" id="education">
+                            <option value="">Not Set</option>
+                            <option value="None">None</option>
+                            <option value="Nursery">Nursery school to 8th grade</option>
+                            <option value="SomeHighSchool">Some high school, no diploma</option>
+                            <option value="HighschoolOrGED">High school graduate, diploma or equivalent (GED)</option>
+                            <option value="SomeCollege">Some college credit, no degree</option>
+                            <option value="Trade">Trade/technical/vocational training</option>
+                            <option value="Associates">Associate degree</option>
+                            <option value="Bachelors">Bachelor's degree</option>
+                            <option value="Graduates">Graduate Degree (Master's, Professional, Doctorate)</option>
+                        </select>
+                    </div>
+                     <div>
+                          <label for="glucose">Glucose</label>
+                          <input type="text" name="glucose" id="glucose" placeholder="80..100, 90">
+                     </div>
+                      <div>
+                          <label for="program">Program</label>
+                          <select name="program" id="program">
+                               <option value="">Not Set</option>
+                               <option value="MHWP">MHWP</option>
+                               <option value="RHWP">RHWP</option>
+                          </select>
+                      </div>
+                      <div>
+                          <label for="visitHistory">Include Visit History?</label>
+                          <select name="visitHistory" id="visitHistory">
+                               <option value="">No (Default)</option>
+                               <option value="true">Yes</option>
+                               <option value="false">No</option>
+                          </select>
+                      </div>
+                       <div>
+                          <label for="status">Participant Status</label>
+                          <select name="status" id="status">
+                               <option value="">Any (Default Active)</option>
+                               <option value="Active">Active</option>
+                               <option value="Inactive">Inactive</option>
+                               <option value="NoValidContactStatus">No Valid Contact Status</option>
+                               <option value="Deceases">Deceased</option>
+                               <option value="Withdrew">Withdrew</option>
+                          </select>
+                       </div>
+                        <div>
+                            <label for="bp_systolic">BP Systolic</label>
+                            <input type="text" name="bp_systolic" id="bp_systolic" placeholder="110..120, 115">
+                        </div>
+                       <div>
+                            <label for="bp_diastolic">BP Diastolic</label>
+                            <input type="text" name="bp_diastolic" id="bp_diastolic" placeholder="70..80, 75">
+                       </div>
+                       <div class="placeholder"></div> <div class="placeholder"></div> </div>
+                <div class="filter-buttons">
+                    <button type="button" id="submitFilterBtn" class="action-button">Search</button>
+                    <button type="button" id="clearBtn" class="action-button">Clear Filters</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="resultsArea">
+             <h3>Query Results</h3>
+             <div id="totalParticipantsInfo">
+                 Matching Participants: <span id="total">0</span> / <span id="overallTotal">Loading...</span>
+             </div>
+             <div id="output">Please select filters and click Search.</div>
+             <div id="chartContainer">
+                 <canvas id="comparisonChart"></canvas>
+             </div>
+             <button type="button" id="downloadCsvBtn" class="action-button">Download Results (CSV)</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact">
+            <a href="mailto:vcu_nurse@vcu.edu">Contact Us</a>
+        </div>
+        <div class="social-icons">
+            <span>in</span>
+            <span>f</span>
+        </div>
+    </footer>
+
+    <script src="api_handler_v3.js" defer></script>
+</body>
+</html>

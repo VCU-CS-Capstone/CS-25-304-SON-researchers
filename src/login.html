@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCU Health - Login & Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        html, body { height: 100%; }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            color: #333;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            filter: blur(4px);
+        }
+
+        header { display: flex; justify-content: space-between; align-items: center; background: black; padding: 15px 50px; color: white; border-bottom: 10px solid #EFB310; position: relative; flex-shrink: 0; z-index: 1; }
+        .logo img { height: 50px; width: auto; }
+        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 1.2em; font-weight: bold; color: white; width: 60%; white-space: normal; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul li a { color: white; text-decoration: none; font-size: 1em; }
+        nav ul li a:hover, .sign-in:hover { color: #EFB310; }
+        .sign-in { background: none; color: white; border: 2px solid #EFB310; padding: 5px 12px; font-size: 1em; cursor: pointer; margin-left: 20px; }
+
+        main {
+            flex-grow: 1;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .login-content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1400px;
+            gap: 30px;
+        }
+
+        .login-box {
+            background: #333;
+            padding: 35px 45px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            flex: 1 1 400px;
+            max-width: 450px;
+            min-width: 300px;
+        }
+        .login-box h2 { margin-bottom: 25px; color: #EFB310; font-size: 1.5em; }
+        .login-form div { margin-bottom: 18px; text-align: left; }
+        .login-form label { display: block; font-weight: bold; color: #f0f0f0; font-size: 0.9em; margin-bottom: 6px; }
+        .login-form input[type="text"],
+        .login-form input[type="password"] { width: 100%; padding: 11px; border-radius: 5px; border: 1px solid #555; background: #fff; color: black; font-size: 1em; }
+        .login-button { padding: 11px 30px; font-weight: bold; border-radius: 5px; border: none; cursor: pointer; background-color: #EFB310; color: black; font-size: 1.05em; transition: background-color 0.2s ease; width: 100%; margin-top: 10px; }
+        .login-button:hover { background-color: #d9a00b; }
+
+        .charts-area {
+            flex: 2 1 600px;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        .charts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            gap: 20px;
+        }
+        .chart-wrapper {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: calc(50% - 10px);
+            min-width: 280px;
+            text-align: center;
+        }
+         .chart-wrapper h3 { margin-bottom: 15px; color: #333; font-size: 1.1em; }
+         .chart-wrapper canvas { max-height: 250px; width: 100% !important; }
+         #chartStatus { text-align: center; margin-top: 20px; color: #333; width: 100%; font-style: italic; background-color: rgba(255, 255, 255, 0.7); padding: 5px; border-radius: 4px; }
+
+
+        footer { position: relative; background: black; color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; width: 100%; flex-shrink: 0; z-index: 1; }
+        footer::before { content: ""; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; background: #EFB310; }
+        .contact a { color: #EFB310; text-decoration: none; font-size: 0.9em; }
+        .contact a:hover { text-decoration: underline; }
+        .social-icons span { font-size: 1.5em; color: #EFB310; font-weight: bold; cursor: pointer; margin-left: 15px; }
+
+        @media (max-width: 900px) {
+             .login-content-wrapper { flex-direction: column; align-items: center; }
+             .login-box, .charts-area { flex-basis: auto; width: 100%; max-width: 600px; }
+             .charts-area { margin-top: 30px; }
+             .chart-wrapper { width: calc(50% - 10px); }
+        }
+         @media (max-width: 700px) {
+              .chart-wrapper { width: 100%; }
+        }
+         @media (max-width: 600px) {
+              header { padding: 10px 20px; }
+              main { padding: 20px; }
+              footer { padding: 20px; justify-content: center; }
+              .header-text { font-size: 1em; width: 80%; }
+              .login-box { padding: 25px 30px; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"> <img src="vcu-logo.png" alt="VCU Health Logo"> </a>
+        </div>
+         <div class="header-text">
+             Mobile Health and Wellness Program<br>
+             Building healthier and stronger communities
+         </div>
+        <nav></nav>
+    </header>
+
+    <main>
+        <div class="login-content-wrapper">
+            <div class="login-box">
+                <h2>Researcher Login</h2>
+                <form id="loginForm" class="login-form">
+                    <div>
+                        <label for="username">Username or Email</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="login-button">Login</button>
+                </form>
+            </div>
+
+            <div class="charts-area">
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <h3>Insurance Distribution</h3>
+                        <canvas id="loginInsuranceChart"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <h3>Age Distribution</h3>
+                        <canvas id="loginAgeChart"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <h3>Race Distribution</h3>
+                        <canvas id="loginRaceChart"></canvas>
+                    </div>
+                    </div>
+                <div id="chartStatus">Loading chart data...</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact">
+            <a href="mailto:vcu_nurse@vcu.edu">Contact Us</a>
+        </div>
+        <div class="social-icons">
+            <span>in</span>
+            <span>f</span>
+        </div>
+    </footer>
+
+   <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Login submitted, attempting redirect to index.html...');
+        window.location.href = 'index.html';
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="charts.js" defer></script>
+
+</body>
+</html>
