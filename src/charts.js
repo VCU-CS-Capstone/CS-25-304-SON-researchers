@@ -505,6 +505,6 @@ async function initializeLoginPage() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Login page DOM loaded. Initializing multi-call charts v4 (No Edu)...");
+    console.log("Login page DOM loaded.");
     initializeLoginPage();
 });
