@@ -14,15 +14,8 @@ IF you are downloading for offline use and have the repo cloned:
 
 > .\CS-25-304-SON-Researchers\src\
 
-**2.** Run the following commands:
 
-For Python 3:
-```
-py -m pip install http.server
-py -m pip install csv_reader
-```
-
-**3.** Run the .tar file:
+**2.** Run the .tar file:
 ```
 docker load -i capstone-app.tar
 ```
