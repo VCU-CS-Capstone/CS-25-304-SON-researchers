@@ -37,6 +37,6 @@ docker build -t [name1]
 
 Then:
 ```
-docker run -d -p 8080:80 --name [name2] c[name1]
+docker run -d -p 8080:80 --name [name2] [name1]
 ```
 Go to http://localhost:8080, and you're done!
