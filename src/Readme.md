@@ -8,7 +8,7 @@ docker pull wgxm/capstone-app
 From there, you can run the image like normal without any issues.
 
 
-IF you are downloading for offline use and have the repo cloned:
+If you are downloading for offline use and have the repo cloned:
 
 **1.** Navigate to the src folder in the terminal:
 
@@ -22,7 +22,7 @@ docker load -i capstone-app.tar
 
 Run the .html files from local filesystem, and you're done!
 
-If you wish to load the container up and run it, you can do so by building a container and then running everything inside of it. Name1 can be anything you want, same with name2.
+If you don't have a container, follow this part. Name1 can be anything you want, same with name2.
 Make sure you are in the right directory! Create and run the container within the src folder.
 ```
 docker build -t [name1]
